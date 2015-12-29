@@ -2,20 +2,20 @@
 Largest palindrome product
 """
 
-def max_palindrome(i, j, max):
+def max_palindrome(i, j, x):
     product = i * j
     if str(product) == str(product)[::-1]:
-        if product > max:
-            max = product
-    return max
+        if product > m:
+            m = product
+    return m
 
 digits = range(101, 999)
-max = 0
+m = 0
 
 for i in digits:
     for j in digits:
-        max = max_palindrome(i, j, max)
+        m = max_palindrome(i, j, m)
 
-print max
+print m
 
 
