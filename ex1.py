@@ -9,7 +9,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 n = 1000
 
-# Solution using a loop
+# 1. Solution using a loop
 sum = 0
 for i in range(n):
    if i % 3 == 0 or i % 5 == 0:
@@ -17,7 +17,8 @@ for i in range(n):
 print sum
 
 
-# Solution using summation of parts
+
+# 2. Solution using summation of parts
 def k(n, i):
     # 3 * 999/3 * (999/3)+1 / 2
     # 5 * 999/5 * (999/5)+1 / 2
@@ -32,3 +33,9 @@ multiples_of_15 = k(n, 15)
 sum = multiples_of_3 + multiples_of_5  - multiples_of_15
 print sum
 
+
+# 3. Solution using filter
+
+def multiple_3and5(n): return x % 3 == 0 or x % 5 == 0
+
+print sum(filter(multiple_3and5, range(1, 1000)))
