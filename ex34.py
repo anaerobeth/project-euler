@@ -3,6 +3,8 @@ Digit factorials
 Find the sum of all numbers which are equal to the sum of the factorial of their digits.
 """
 
+from itertools import accumulate
+
 def sum_factorials(num):
     result = [ factorial(int(i)) for i in str(num) ]
     return sum(result)
@@ -28,12 +30,9 @@ assert sum_factorials(145) == 145
 
 def find_matches(ceiling):
     """ Collect numbers matching sum the of their factorials """
-    matches = []
+    result = [ i for i in range(3, ceiling) if i == sum_factorials(i) ]
 
-    for i in range(3, ceiling):
-        if i == sum_factorials(i):
-            matches.append(i)
-    return matches
+    return list(accumulate(result))
 
 
 # assert find_matches(10000) == [145]
@@ -44,5 +43,5 @@ def find_matches(ceiling):
 # assert sum(find_matches(1000000)) ==  40730
 # assert sum(find_matches(10000000)) ==  40730
 
-print sum(find_matches(100000)) # 40730
+print(sum(find_matches(100000))) # 40730
 
