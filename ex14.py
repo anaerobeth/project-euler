@@ -28,3 +28,37 @@ def brute_force_solution():
             king = num
 
     return king # 837799
+
+
+def fast_sequence(n, d):
+    print('Entering: ', d)
+    if d[n] != None: return d[n]
+    print('Dict is: ', d)
+    if n % 2 == 0:
+        print('Even: ', d)
+        d[n] = fast_sequence(n/2, d)
+    else:
+        print('Odd: ', d)
+        d[n] = fast_sequence(3*n+1, d)
+    return d
+
+
+def build_sequence_dict(limit):
+    d = { 1: 1 }
+
+    for n in range(1, limit):
+        print('Building sequence: ', n)
+        fast_sequence(n, d)
+
+
+def dict_solution(limit):
+    print('In dict solution')
+    build_sequence_dict(limit)
+    return max(d, key=lambda key: d[key]) # 837799
+
+
+def main():
+    print(dict_solution(100))
+
+if __name__ == '__main__':
+    main()
